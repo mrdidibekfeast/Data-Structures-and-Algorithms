@@ -109,17 +109,11 @@ namespace CircularDoublyLinkedList
             }
             else
             {
-                DoublyLinkedListNode<T> temp = Head.Next;
-                while (temp != node)
-                {
-                    temp = temp.Next;
-                }
+                newNode.Next = node.Next;
+                node.Next.Previous = newNode;
+                newNode.Previous = node;
+                node.Next = newNode;
 
-                temp.Next.Previous = newNode;
-                newNode.Next = temp.Next;
-                temp.Next = newNode;
-                newNode.Previous = temp;
-               
             }
         }
 
@@ -289,16 +283,14 @@ namespace CircularDoublyLinkedList
             }
             else
             {
-                DoublyLinkedListNode<T> temp = Head.Next;
-                while(temp != node)
-                {
-                    temp = temp.Next;
-                }
                 DoublyLinkedListNode<T> newNode = new DoublyLinkedListNode<T>(value, this);
 
-                temp.Previous.Next = newNode;
-                newNode.Next = temp;
-                temp.Previous = newNode;
+                newNode.Next = node;
+                newNode.Previous = node.Previous;
+                node.Previous.Next = newNode;
+                node.Previous = newNode;
+                
+
             }
         }
         
