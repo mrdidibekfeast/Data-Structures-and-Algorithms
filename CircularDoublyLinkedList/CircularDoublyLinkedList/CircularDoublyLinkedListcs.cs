@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CircularDoublyLinkedList
 {
-    class DoublyLinkedListNode<T>
+    public class DoublyLinkedListNode<T>
     {
         public DoublyLinkedListNode<T> Next { get; set; }
         public DoublyLinkedListNode<T> Previous { get; set; }
@@ -23,7 +23,7 @@ namespace CircularDoublyLinkedList
         }
     }
 
-    class DoublyLinkedList<T>
+    public class DoublyLinkedList<T>
     {
         public int Count { get; private set; }  
         public DoublyLinkedListNode<T> Head { get; private set; }

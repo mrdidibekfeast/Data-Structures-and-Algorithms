@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stacks", "Stacks\Stacks.csproj", "{D6372499-9C19-4B06-9560-D2A9103697AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularDoublyLinkedList", "..\CircularDoublyLinkedList\CircularDoublyLinkedList\CircularDoublyLinkedList.csproj", "{F867486C-4B3D-91E3-73F0-4151FEABA2BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6372499-9C19-4B06-9560-D2A9103697AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6372499-9C19-4B06-9560-D2A9103697AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6372499-9C19-4B06-9560-D2A9103697AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6372499-9C19-4B06-9560-D2A9103697AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F867486C-4B3D-91E3-73F0-4151FEABA2BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F867486C-4B3D-91E3-73F0-4151FEABA2BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F867486C-4B3D-91E3-73F0-4151FEABA2BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F867486C-4B3D-91E3-73F0-4151FEABA2BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00872106-EA17-4064-B83C-B1C941B02A63}
+	EndGlobalSection
+EndGlobal
