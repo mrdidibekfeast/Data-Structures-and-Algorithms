@@ -1,4 +1,6 @@
-﻿namespace CycleCheckLinkedList
+﻿using System.Net.Security;
+
+namespace CycleCheckLinkedList
 {
     internal class Program
     {
@@ -13,8 +15,8 @@
             first.Next.Next.Next.Next.Next.Next = new Node<int>(1);
             first.Next.Next.Next.Next.Next.Next.Next = new Node<int>(1);
             first.Next.Next.Next.Next.Next.Next.Next.Next = first;
-
-
+            
+            //cycle
             Console.WriteLine(LinkedList<int>.CycleCheck(first));
 
             Node<int> second = new Node<int>(1);
@@ -27,7 +29,7 @@
             second.Next.Next.Next.Next.Next.Next.Next = new Node<int>(1);
             second.Next.Next.Next.Next.Next.Next.Next.Next = null;
 
-
+            //no cycle
             Console.WriteLine(LinkedList<int>.CycleCheck(second));
         }
     }
