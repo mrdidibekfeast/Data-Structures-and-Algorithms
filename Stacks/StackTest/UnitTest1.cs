@@ -52,8 +52,9 @@ namespace StackTest
         }
 
         [Fact]
-        public void test4()
+        public void clearTest()
         {
+         
             Stack<int> stack = new Stack<int>();
             Stacks.LinkedListStack<int> stackll = new Stacks.LinkedListStack<int>();
             stackll.Push(1);
