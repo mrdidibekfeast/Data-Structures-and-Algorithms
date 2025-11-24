@@ -4,18 +4,21 @@ namespace QueuesUnitTest
     public class UnitTest1
     {
         [Theory]
-        [InlineData(1,2,3,4,5)]
+        [InlineData(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)]
         public void enqueueTest(params int[] array)
         {
             Queue<int> queue = new Queue<int>();
             LinkedListQueue<int> llqueue = new LinkedListQueue<int>();
+            ArrayQueue<int> arrayQueue = new ArrayQueue<int>();
             for(int i = 0; i < array.Length;i++)
             {
                 queue.Enqueue(array[i]);
                 llqueue.Enqueue(array[i]);
+                arrayQueue.Enqueue(array[i]);
             }
 
             Assert.Equal(llqueue.Peek(), queue.Peek());
+            Assert.Equal(arrayQueue.Peek(), queue.Peek());
         }
 
         [Theory]

@@ -19,7 +19,7 @@ namespace Queues
             data = new T[10];
             Count = 0;
             head = 0;
-            tail = 0;
+            tail = -1;
         }// Construct the Queue
 
         public void Enqueue(T value)
@@ -28,11 +28,55 @@ namespace Queues
             {
                 Resize(data.Length * 2);
                 data[tail + 1] = value;
+                Count++;
+                tail = tail++;
+                return;
             }
-            Count++;
-            //finish
+
+            int targetIndex = tail + 1;
+            if(targetIndex < data.Length)
+            {
+                data[targetIndex] = value;
+                Count++;
+                tail = targetIndex;
+                return;
+            }
+            else
+            {
+                data[0] = value;
+                Count++;
+                tail = 0;
+                return;
+            }
+
         }
-        public T Dequeue() { ... } // Remove and get the item at the front of the Queue
+        public T Dequeue()
+        {
+            if (Count == 0)
+            {
+                throw new Exception("can not dequeue from an empty queue");
+            }
+            int dataIndex = head;
+            Count--;
+            if( Count == 0)
+            {
+                head = 0;
+                tail = -1;
+                return data[dataIndex];
+            }
+
+            int newIndex = head++;
+            if (newIndex < data.Length)
+            {
+                head = newIndex;
+                return data[dataIndex];
+            }
+            else
+            {
+                head = 0;
+                return data[dataIndex];
+            }
+        }// Remove and get the item at the front of the Queue
         public T Peek()
         {
             return data[head];
@@ -59,7 +103,6 @@ namespace Queues
             tail = index - 1;
         }// Resize and re-index the data 
 
-        // Optional Functions
         public bool IsEmpty()
         {
             if (Count == 0)
