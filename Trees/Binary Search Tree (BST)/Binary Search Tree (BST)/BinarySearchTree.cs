@@ -191,5 +191,42 @@ namespace Binary_Search_Tree__BST_
                 return currNode.Value;
             }
         }
+
+        public List<T> LevelOrder()
+        {
+            Queue<Node<T>> queue = new Queue<Node<T>>();
+            Node<T> currNode = root;
+            List<T> nums = new List<T>();
+
+            if(currNode == null)
+            {
+                return new List<T>();
+            }
+            else
+            {
+                queue.Enqueue(currNode);
+                while(queue.Count > 0)
+                {
+                    currNode = queue.Dequeue();
+                    nums.Add(currNode.Value);
+                    if(currNode.Left != null)
+                    {
+                        queue.Enqueue(currNode.Left);
+                    }
+                    if (currNode.Right != null)
+                    {
+                        queue.Enqueue(currNode.Right);
+                    }
+
+                }
+
+                return nums;
+            }
+        }
+
+        public List<T> preOrder()
+        {
+            //curr node print add to stack go left. Cant go left dequeue and go right 
+        }
     }
 }
