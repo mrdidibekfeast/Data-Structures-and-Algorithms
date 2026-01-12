@@ -226,7 +226,34 @@ namespace Binary_Search_Tree__BST_
 
         public List<T> preOrder()
         {
-            //curr node print add to stack go left. Cant go left dequeue and go right 
+            Stack<Node<T>> stack = new Stack<Node<T>>();
+            Node<T> currNode = root;
+            List<T> nums = new List<T>();
+
+            if (currNode == null)
+            {
+                return new List<T>();
+            }
+            else
+            {
+                stack.Push(currNode);
+                while (stack.Count > 0)
+                {
+                    currNode = stack.Pop();
+                    nums.Add(currNode.Value);
+                    if (currNode.Right != null)
+                    {
+                        stack.Push(currNode.Right);
+                    }
+                    if (currNode.Left != null)
+                    {
+                        stack.Push(currNode.Left);
+                    }
+                }
+
+                return nums;
+            }
+
         }
     }
 }
