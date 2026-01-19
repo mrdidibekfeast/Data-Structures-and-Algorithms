@@ -128,10 +128,32 @@ namespace BSTtest
             BST.Insert(5);
             BST.Insert(10);
 
-            List<int> traverse = BST.preOrder();
+            List<int> traverse = BST.PreOrder();
             List<int> preOrder = [6,2,1,4,3,5,8,7,9,10];
 
             Assert.Equal(traverse[2], preOrder[2]);
+        }
+
+
+        [Fact]
+        public void PostOrderTest()
+        {
+            BinarySearchTree<int> BST = new BinarySearchTree<int>();
+            BST.Insert(6);
+            BST.Insert(2);
+            BST.Insert(8);
+            BST.Insert(1);
+            BST.Insert(4);
+            BST.Insert(7);
+            BST.Insert(9);
+            BST.Insert(3);
+            BST.Insert(5);
+            BST.Insert(10);
+
+            List<int> traverse = BST.PostOrder();
+            List<int> postOrder = [1,3,5,4,2,7,10,9,8,6];
+
+            Assert.Equal(traverse[2], postOrder[2]);
         }
     }
 }

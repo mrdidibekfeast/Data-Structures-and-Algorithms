@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -224,7 +225,7 @@ namespace Binary_Search_Tree__BST_
             }
         }
 
-        public List<T> preOrder()
+        public List<T> PreOrder()
         {
             Stack<Node<T>> stack = new Stack<Node<T>>();
             Node<T> currNode = root;
@@ -255,5 +256,43 @@ namespace Binary_Search_Tree__BST_
             }
 
         }
+
+        public List<T> PostOrder()
+        {
+            Stack<Node<T>> stack = new Stack<Node<T>>();
+            Stack<T> finalStack = new Stack<T>();
+            Node<T> currNode = root;
+
+            if (currNode == null)
+            {
+                return new List<T>();
+            }
+            else
+            {
+                stack.Push(currNode);
+                while (stack.Count > 0)
+                {
+                    currNode = stack.Pop();
+                    finalStack.Push(currNode.Value);
+                    if (currNode.Left != null)
+                    {
+                        stack.Push(currNode.Left);
+                    }
+                    if (currNode.Right != null)
+                    {
+                        stack.Push(currNode.Right);
+                    }
+                }
+
+                return finalStack.ToList<T>();
+            }
+        }
+
+
+        public List<T> InOrder()
+        {
+
+        }
+
     }
 }
