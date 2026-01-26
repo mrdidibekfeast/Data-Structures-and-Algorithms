@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -291,7 +292,26 @@ namespace Binary_Search_Tree__BST_
 
         public List<T> InOrder()
         {
+            Stack<Node<T>> stack = new Stack<Node<T>>();
+            Node<T> currNode = root;
+            List<T> nums = new List<T>();
 
+            
+            while(currNode != null && stack.Count > 0)
+            {
+                while(currNode != null)
+                {
+                    stack.Push(currNode);
+                    currNode = currNode.Left;
+                }
+
+                currNode = stack.Pop();
+                nums.Add(currNode.Value);
+
+                currNode = currNode.Right;
+            }
+
+            return nums;
         }
 
     }
