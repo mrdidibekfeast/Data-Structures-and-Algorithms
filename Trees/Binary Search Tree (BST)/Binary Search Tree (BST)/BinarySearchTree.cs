@@ -314,5 +314,78 @@ namespace Binary_Search_Tree__BST_
             return nums;
         }
 
+
+        public bool Remove(T value)
+        {
+            Node<T> parent = null;
+            bool isLeftChild = false;
+
+            if (root == null)
+            {
+                return false;
+            }
+            
+            Node<T> currNode = root;
+            while (true)
+            {
+                if (value.CompareTo(currNode.Value) < 0)
+                {
+                    if (currNode.Left == null)
+                    {
+                        return false;
+                    }
+                    else if(currNode.Left.Value.Equals(value))
+                    {
+                        parent = currNode;
+                        isLeftChild = true;
+                        currNode = currNode.Left;
+                        break;
+                    }
+                    else
+                    {
+                        currNode = currNode.Left;
+                    }
+                }
+                else if (value.CompareTo(currNode.Value) > 0)
+                {
+                    if (currNode.Right == null)
+                    {
+                        return false;
+                    }
+                    else if (currNode.Right.Value.Equals(value))
+                    {
+                        parent = currNode;
+                        currNode = currNode.Right;
+                        break;
+                    }
+                    else
+                    {
+                        currNode = currNode.Right;
+                    }
+                }
+                else
+                {
+                    root = null;
+                    return true;
+                }
+            }
+
+
+            Node<T> replacement;
+            if(currNode)
+
+
+
+
+            if (isLeftChild)
+            {
+                parent.Left = replacement;
+            }
+            else
+            {
+                parent.Right = replacement;
+            }
+        }
+
     }
 }
