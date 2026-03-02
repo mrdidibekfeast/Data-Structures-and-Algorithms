@@ -155,5 +155,37 @@ namespace BSTtest
 
             Assert.Equal(traverse[2], postOrder[2]);
         }
+
+        [Fact]
+        public void InOrderTest()
+        {
+            BinarySearchTree<int> BST = new BinarySearchTree<int>();
+            BST.Insert(6);
+            BST.Insert(2);
+            BST.Insert(8);
+            BST.Insert(1);
+            BST.Insert(4);
+            BST.Insert(7);
+            BST.Insert(9);
+            BST.Insert(3);
+            BST.Insert(5);
+            BST.Insert(10);
+
+            List<int> traverse = BST.InOrder();
+            List<int> InOrder = [1,2,3,4,5,6,7,8,9,10];
+
+            Assert.Equal(traverse[3], InOrder[3]);
+        }
+
+        [Fact]
+
+        public void oneChildRemoveTest()
+        {
+            BinarySearchTree<int> BST = new BinarySearchTree<int>();
+            BST.Insert(1);
+            BST.Insert(2);
+
+
+        }
     }
 }

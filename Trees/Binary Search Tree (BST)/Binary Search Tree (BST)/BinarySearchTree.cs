@@ -297,7 +297,7 @@ namespace Binary_Search_Tree__BST_
             List<T> nums = new List<T>();
 
             
-            while(currNode != null && stack.Count > 0)
+            while(currNode != null || stack.Count > 0)
             {
                 while(currNode != null)
                 {
@@ -372,7 +372,14 @@ namespace Binary_Search_Tree__BST_
 
 
             Node<T> replacement;
-            if(currNode)
+            if (currNode.Left == null && currNode.Right == null)
+            {
+                replacement = null;
+            }
+            else
+            {
+                replacement = null;
+            }
 
 
 
@@ -380,11 +387,15 @@ namespace Binary_Search_Tree__BST_
             if (isLeftChild)
             {
                 parent.Left = replacement;
+                Count--;
             }
             else
             {
                 parent.Right = replacement;
+                Count--;
             }
+
+            return false;
         }
 
     }
