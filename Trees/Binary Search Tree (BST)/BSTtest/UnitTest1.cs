@@ -178,14 +178,63 @@ namespace BSTtest
         }
 
         [Fact]
-
-        public void oneChildRemoveTest()
+        public void NoChildRemoveTest()
         {
             BinarySearchTree<int> BST = new BinarySearchTree<int>();
-            BST.Insert(1);
+            BST.Insert(6);
             BST.Insert(2);
+            BST.Insert(8);
+            BST.Insert(1);
+            BST.Insert(4);
+            BST.Insert(7);
+            BST.Insert(9);
+            BST.Insert(3);
+            BST.Insert(5);
+            BST.Insert(10);
 
-
+            Assert.True(BST.Remove(1));
+            Assert.Null(BST.root.Left.Left);
         }
+
+
+        [Fact]
+        public void OneChildRemoveTest()
+        {
+            BinarySearchTree<int> BST = new BinarySearchTree<int>();
+            BST.Insert(6);
+            BST.Insert(2);
+            BST.Insert(8);
+            BST.Insert(1);
+            BST.Insert(4);
+            BST.Insert(7);
+            BST.Insert(9);
+            BST.Insert(3);
+            BST.Insert(5);
+            BST.Insert(10);
+
+            Assert.True(BST.Remove(9));
+            
+        }
+
+        [Fact]
+        public void TwoChildRemoveTest()
+        {
+            BinarySearchTree<int> BST = new BinarySearchTree<int>();
+            BST.Insert(6);
+            BST.Insert(2);
+            BST.Insert(8);
+            BST.Insert(1);
+            BST.Insert(4);
+            BST.Insert(7);
+            BST.Insert(9);
+            BST.Insert(3);
+            BST.Insert(5);
+            BST.Insert(10);
+
+            Assert.True(BST.Remove(7));
+            Assert.True(BST.Remove(6));
+            ;
+        }
+
     }
 }

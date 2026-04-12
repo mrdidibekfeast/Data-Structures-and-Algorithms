@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.NetworkInformation;
 
 namespace Binary_Search_Tree__BST_
 {
@@ -20,15 +14,15 @@ namespace Binary_Search_Tree__BST_
             Value = value;
             Left = null;
             Right = null;
-            
+
         }
     }
 
-    public class BinarySearchTree <T> where T : IComparable<T>
+    public class BinarySearchTree<T> where T : IComparable<T>
     {
         public Node<T> root { get; private set; }
         private int Count;
-        
+
         public BinarySearchTree()
         {
             root = null;
@@ -37,7 +31,7 @@ namespace Binary_Search_Tree__BST_
 
         public bool Insert(T value)
         {
-            if(root == null)
+            if (root == null)
             {
                 root = new Node<T>(value);
                 Count++;
@@ -83,18 +77,18 @@ namespace Binary_Search_Tree__BST_
         }
         public Node<T> Search(T value)
         {
-            if(root == null)
+            if (root == null)
             {
                 return null;
             }
             else
             {
                 Node<T> currNode = root;
-                while(true)
+                while (true)
                 {
-                    if(value.CompareTo(currNode.Value) < 0)
-                    {   
-                        if(currNode.Left == null)
+                    if (value.CompareTo(currNode.Value) < 0)
+                    {
+                        if (currNode.Left == null)
                         {
                             return null;
                         }
@@ -103,7 +97,7 @@ namespace Binary_Search_Tree__BST_
                             currNode = currNode.Left;
                         }
                     }
-                    else if(value.CompareTo(currNode.Value) > 0)
+                    else if (value.CompareTo(currNode.Value) > 0)
                     {
                         if (currNode.Right == null)
                         {
@@ -117,7 +111,7 @@ namespace Binary_Search_Tree__BST_
                     else
                     {
                         return currNode;
-                    }   
+                    }
                 }
             }
         }
@@ -125,7 +119,7 @@ namespace Binary_Search_Tree__BST_
         {
             if (root == null)
             {
-                return false; 
+                return false;
             }
             else
             {
@@ -200,18 +194,18 @@ namespace Binary_Search_Tree__BST_
             Node<T> currNode = root;
             List<T> nums = new List<T>();
 
-            if(currNode == null)
+            if (currNode == null)
             {
                 return new List<T>();
             }
             else
             {
                 queue.Enqueue(currNode);
-                while(queue.Count > 0)
+                while (queue.Count > 0)
                 {
                     currNode = queue.Dequeue();
                     nums.Add(currNode.Value);
-                    if(currNode.Left != null)
+                    if (currNode.Left != null)
                     {
                         queue.Enqueue(currNode.Left);
                     }
@@ -296,10 +290,10 @@ namespace Binary_Search_Tree__BST_
             Node<T> currNode = root;
             List<T> nums = new List<T>();
 
-            
-            while(currNode != null || stack.Count > 0)
+
+            while (currNode != null || stack.Count > 0)
             {
-                while(currNode != null)
+                while (currNode != null)
                 {
                     stack.Push(currNode);
                     currNode = currNode.Left;
@@ -324,8 +318,11 @@ namespace Binary_Search_Tree__BST_
             {
                 return false;
             }
-            
+
+
             Node<T> currNode = root;
+
+
             while (true)
             {
                 if (value.CompareTo(currNode.Value) < 0)
@@ -334,7 +331,7 @@ namespace Binary_Search_Tree__BST_
                     {
                         return false;
                     }
-                    else if(currNode.Left.Value.Equals(value))
+                    else if (currNode.Left.Value.Equals(value))
                     {
                         parent = currNode;
                         isLeftChild = true;
@@ -365,37 +362,92 @@ namespace Binary_Search_Tree__BST_
                 }
                 else
                 {
-                    root = null;
-                    return true;
+                    break;
                 }
             }
 
 
             Node<T> replacement;
-            if (currNode.Left == null && currNode.Right == null)
+            if (currNode.Left is null && currNode.Right is null)
             {
                 replacement = null;
+            }
+            else if (currNode.Left is not null && currNode.Right is null)
+            {
+                replacement = currNode.Left;
+            }
+            else if (currNode.Left is null && currNode.Right is not null)
+            {
+                replacement = currNode.Right;
+            }
+            else if (currNode.Left is not null && currNode.Right is not null)
+            {
+                Node<T> soFar = currNode.Right;
+                Node<T> soFarParent = currNode;
+                while (soFar.Left is not null)
+                {
+                    soFarParent = soFar;
+                    soFar = soFar.Left;
+                }
+                if (soFarParent.Equals(currNode))
+                {
+                    currNode.Value = soFar.Value;
+                    replacement = currNode;
+                    Node<T> soFarReplacement;
+                    if (soFar.Right is not null)
+                    {
+                        soFarReplacement = soFar.Right;
+                    }
+                    else
+                    {
+                        soFarReplacement = null;
+                    }
+                    soFarParent.Right = soFarReplacement;
+                }
+                else
+                {
+                    currNode.Value = soFar.Value;
+                    replacement = currNode;
+                    Node<T> soFarReplacement; 
+                    if(soFar.Right is not null)
+                    {
+                        soFarReplacement = soFar.Right;
+                    }
+                    else
+                    {
+                        soFarReplacement = null;
+                    }
+                    soFarParent.Left = soFarReplacement;
+                }
             }
             else
             {
-                replacement = null;
+                throw new Exception("not a BST");
             }
 
 
 
+
+
+            if (currNode == root)
+            {
+                root = replacement;
+                Count--;
+                return true;
+            }
 
             if (isLeftChild)
             {
                 parent.Left = replacement;
                 Count--;
+                return true;
             }
             else
             {
                 parent.Right = replacement;
                 Count--;
+                return true;
             }
-
-            return false;
         }
 
     }
