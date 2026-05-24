@@ -129,9 +129,12 @@ namespace BSTtest
             BST.Insert(10);
 
             List<int> traverse = BST.PreOrder();
+            List<int> traverse2 = new List<int>();
+            BST.PreOrderRecursive(traverse2,BST.root);
             List<int> preOrder = [6,2,1,4,3,5,8,7,9,10];
 
             Assert.Equal(traverse[2], preOrder[2]);
+            Assert.Equal(traverse2[2], preOrder[2]);
         }
 
 
@@ -151,9 +154,12 @@ namespace BSTtest
             BST.Insert(10);
 
             List<int> traverse = BST.PostOrder();
+            List<int> traverse2 = new List<int>();
+            BST.PostOrderRecursive(traverse2, BST.root);
             List<int> postOrder = [1,3,5,4,2,7,10,9,8,6];
 
             Assert.Equal(traverse[2], postOrder[2]);
+            Assert.Equal(traverse2[2], postOrder[2]);
         }
 
         [Fact]
@@ -172,9 +178,12 @@ namespace BSTtest
             BST.Insert(10);
 
             List<int> traverse = BST.InOrder();
+            List<int> traverse2 = new List<int>();
+            BST.InOrderRecursive(traverse2, BST.root);
             List<int> InOrder = [1,2,3,4,5,6,7,8,9,10];
 
             Assert.Equal(traverse[3], InOrder[3]);
+            Assert.Equal(traverse2[2], InOrder[2]);
         }
 
         [Fact]

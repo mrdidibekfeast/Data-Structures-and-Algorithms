@@ -1,4 +1,5 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Globalization;
+using System.Net.NetworkInformation;
 
 namespace Binary_Search_Tree__BST_
 {
@@ -252,6 +253,17 @@ namespace Binary_Search_Tree__BST_
 
         }
 
+        public void PreOrderRecursive(List<T> list, Node<T> currNode)
+        {
+            if (currNode == null)
+            {
+                return;
+            }
+            list.Add(currNode.Value);
+            PreOrderRecursive(list, currNode.Left);
+            PreOrderRecursive(list, currNode.Right);
+        }
+
         public List<T> PostOrder()
         {
             Stack<Node<T>> stack = new Stack<Node<T>>();
@@ -283,6 +295,17 @@ namespace Binary_Search_Tree__BST_
             }
         }
 
+        public void PostOrderRecursive(List<T> list, Node<T> currNode)
+        {
+            if(currNode == null)
+            {
+                return;
+            }
+            PostOrderRecursive(list, currNode.Left);
+            PostOrderRecursive(list, currNode.Right);
+            list.Add(currNode.Value);
+        }
+
 
         public List<T> InOrder()
         {
@@ -308,6 +331,17 @@ namespace Binary_Search_Tree__BST_
             return nums;
         }
 
+
+        public void InOrderRecursive(List<T> list, Node<T> currNode)
+        {
+            if (currNode == null)
+            {
+                return;
+            }
+            InOrderRecursive(list, currNode.Left);
+            list.Add(currNode.Value);
+            InOrderRecursive(list, currNode.Right);
+        }
 
         public bool Remove(T value)
         {
@@ -408,8 +442,8 @@ namespace Binary_Search_Tree__BST_
                 {
                     currNode.Value = soFar.Value;
                     replacement = currNode;
-                    Node<T> soFarReplacement; 
-                    if(soFar.Right is not null)
+                    Node<T> soFarReplacement;
+                    if (soFar.Right is not null)
                     {
                         soFarReplacement = soFar.Right;
                     }
