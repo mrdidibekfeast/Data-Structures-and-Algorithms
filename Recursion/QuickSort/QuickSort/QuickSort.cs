@@ -1,6 +1,6 @@
 ﻿namespace QuickSort
 {
-    public class Program
+    public class Sorts
     {
 
         public static void Swap<T>(T[] arr,int index1, int index2) where T : IComparable<T>
@@ -11,7 +11,7 @@
         }
         public static T[] QuickSortLomuto<T>(T[] array, int startIndex, int endIndex) where T : IComparable<T>
         {
-            if(array.Length <= 1)
+            if(startIndex == endIndex)
             {
                 return array;
             }
@@ -19,7 +19,7 @@
             int wallIndex = startIndex;
             T pivotValue = array[endIndex];
 
-            for(int i = 0; i < array.Length - 1; i++)
+            for(int i = startIndex; i < endIndex; i++)
             {
                 if (array[i].CompareTo(pivotValue) < 0)
                 {
@@ -29,6 +29,7 @@
             }
             Swap(array, wallIndex, endIndex);
 
+            return array;
         }
 
         /*
@@ -64,5 +65,7 @@
 
         }
         */
+
+    
     }
 }
